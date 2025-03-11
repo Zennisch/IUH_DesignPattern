@@ -10,6 +10,10 @@ public class Product implements Item {
         this.price = price;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public double getPrice() {
         return price;
     }

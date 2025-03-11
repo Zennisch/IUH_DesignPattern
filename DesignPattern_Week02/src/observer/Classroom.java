@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Classroom implements Subject {
 
-    private List<Observer> list;
+    private final List<Observer> list;
 
     public Classroom() {
         this.list = new ArrayList<>();
