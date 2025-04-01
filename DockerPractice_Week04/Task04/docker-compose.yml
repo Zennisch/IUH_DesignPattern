@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  node-app:
+    build: ./Server
+    container_name: node_container
+    ports:
+      - "4000:3000"
+    volumes:
+      - ./Server:/app
+    environment:
+      - NODE_ENV=development
