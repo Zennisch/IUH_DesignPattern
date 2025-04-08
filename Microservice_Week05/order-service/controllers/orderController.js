@@ -35,7 +35,7 @@ exports.createOrder = async (req, res) => {
         for (const item of items) {
             const stockResponse = await axios.post(
                 `${process.env.PRODUCT_SERVICE_URL}/products/${item.product_id}/check-stock`,
-                { quantity: item.quantity }
+                {quantity: item.quantity}
             );
 
             if (!stockResponse.data.available) {
@@ -54,7 +54,7 @@ exports.createOrder = async (req, res) => {
         for (const item of items) {
             await axios.put(
                 `${process.env.PRODUCT_SERVICE_URL}/products/${item.product_id}`,
-                { stock_quantity: -item.quantity }
+                {stock_quantity: -item.quantity}
             );
         }
 

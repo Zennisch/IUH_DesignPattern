@@ -19,15 +19,15 @@ app.use(morgan('combined'));
 
 // Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-  message: { error: 'Too many requests, please try again later' }
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per windowMs
+    message: {error: 'Too many requests, please try again later'}
 });
 app.use(limiter);
 
 // Health check
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'UP' });
+    res.status(200).json({status: 'UP'});
 });
 
 // Auth routes
@@ -41,12 +41,12 @@ setupProxies(app);
 
 // Error handling
 app.use((err, req, res, next) => {
-  logger.error(`Error: ${err.message}`);
-  res.status(500).json({ error: 'Internal Server Error' });
+    logger.error(`Error: ${err.message}`);
+    res.status(500).json({error: 'Internal Server Error'});
 });
 
 // Start server
 app.listen(PORT, () => {
-  logger.info(`API Gateway running on port ${PORT}`);
-  console.log(`API Gateway running on port ${PORT}`);
+    logger.info(`API Gateway running on port ${PORT}`);
+    console.log(`API Gateway running on port ${PORT}`);
 });

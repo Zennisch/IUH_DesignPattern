@@ -70,10 +70,10 @@ class Order {
     static async update(id, orderData) {
         const {status} = orderData;
         const result = await pool.query(
-            `UPDATE orders 
-             SET status = $1, updated_at = CURRENT_TIMESTAMP
-             WHERE id = $2 
-             RETURNING *`,
+            `UPDATE orders
+             SET status = $1,
+                 updated_at = CURRENT_TIMESTAMP
+             WHERE id = $2 RETURNING *`,
             [status, id]
         );
         return result.rows[0];
