@@ -79,6 +79,19 @@ services:
       - PORT=3002
       - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
       - PRODUCT_SERVICE_URL=http://product-service:3001
+  
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - product-service
+      - order-service
+    environment:
+      - PORT=3000
+      - PRODUCT_SERVICE_URL=http://product-service:3001
+      - ORDER_SERVICE_URL=http://order-service:3002
+      - JWT_SECRET=your_jwt_secret_key_here
 
 volumes:
   product_data:
